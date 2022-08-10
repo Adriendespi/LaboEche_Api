@@ -1,4 +1,6 @@
-﻿using LaboEchec.BLL.InterfacesServices;
+﻿using Isopoh.Cryptography.Argon2;
+using LaboEchec.BLL.InterfacesServices;
+using LaboEchec.BLL.Tools;
 using LaboEchec.Dal.Interfaces;
 using LaboEchec.DL.Entity;
 using System;
@@ -18,6 +20,22 @@ namespace LaboEchec.BLL.Services
             _MemberRepositery = memberRepositery;
         }
 
+        public MemberForm Register(MemberForm member)
+        {
+            // TODO Check If Pseudo and email exists!
+            if (!_MemberRepositery.CheckUser(member.Name, member.Email)) throw new Exception("Pseudo ou Email déjà utilisé");
+
+            // Hashé le MDP
+            string pwdHash = Argon2.Hash(member.Pwd);
+            // Ajout dans le DB
+            Members mEntity = member.ToDal();
+            mEntity.Pwd = pwdHash;
+
+            int id = _MemberRepositery.Insert(mEntity).ID;
+
+            // Recuperation du member
+            return _MemberRepositery.GetById(id).ToBll();
+        }
         public bool Delete(Members entity)
         {
             throw new NotImplementedException();

@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "y/I0+FiVcT10fC16tjsuMpYG9BiJVpMsmEkXf26VEdAan5MFzDtsJWIPrM/pFvI/xx5ies1MNtM98pAZZBcFtQ==",
+  "dgSpecHash": "fmgANvnO5MiGDI6apziOd/0F2oR9b6UgeqRNDFbC93fMAhgTBwZ8u3fK8pre1SqDqirfQR2rNnZ3H2uOleNveg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Rolf\\source\\repos\\LaboEchec.Api\\LaboEchec.DL\\LaboEchec.DL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Rolf\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\Rolf\\.nuget\\packages\\isopoh.cryptography.argon2\\1.1.12\\isopoh.cryptography.argon2.1.1.12.nupkg.sha512",
+    "C:\\Users\\Rolf\\.nuget\\packages\\isopoh.cryptography.blake2b\\1.1.12\\isopoh.cryptography.blake2b.1.1.12.nupkg.sha512",
+    "C:\\Users\\Rolf\\.nuget\\packages\\isopoh.cryptography.securearray\\1.1.12\\isopoh.cryptography.securearray.1.1.12.nupkg.sha512",
     "C:\\Users\\Rolf\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Rolf\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\Rolf\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",

@@ -7,5 +7,7 @@ namespace LaboEchec.Dal.Interfaces
         IEnumerable<Members> GetFirst10OrderByName();
 
         Members? GetByUsername(string username);
+
+        bool CheckUser(string name, string email);
     }
 }
