@@ -9,5 +9,7 @@ namespace LaboEchec.Dal.Interfaces
         Members? GetByUsername(string username);
 
         bool CheckUser(string name, string email);
+        
+        string GetHashByName(string name);
     }
 }

@@ -31,5 +31,13 @@ namespace LaboEchec.Dal.Repositories
             return (_Context.Members.Any(m => m.Name == name || m.Email == email));
            
         }
+        public string? GetHashByName(string pseudo)
+        {
+            return _Context.Members.Where(m => m.Name == pseudo)
+                .Select(m => m.Pwd)
+                .SingleOrDefault();
+        }
+
+        
     }
 }

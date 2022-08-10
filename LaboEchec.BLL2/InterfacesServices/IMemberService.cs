@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 
 namespace LaboEchec.BLL.InterfacesServices
 {
-    public interface IMemberService : IRepository<Members>
+    public interface IMemberService : IRepository<MemberForm>
     {
+        MemberForm Register(MemberForm member);
+        MemberForm Login(string pseudo, string password);
     }
 }

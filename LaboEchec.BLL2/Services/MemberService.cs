@@ -36,27 +36,47 @@ namespace LaboEchec.BLL.Services
             // Recuperation du member
             return _MemberRepositery.GetById(id).ToBll();
         }
-        public bool Delete(Members entity)
+        public MemberForm Login(string name, string password)
+        {
+            string hash = _MemberRepositery.GetHashByName(name);
+
+            if (string.IsNullOrWhiteSpace(hash))
+            {
+                throw new Exception("Mot de passe manquant");
+            }
+
+            // Validation du hash avec le password
+            if (Argon2.Verify(hash, password))
+            {
+                return _MemberRepositery.GetByUsername(name).ToBll();
+            }
+            else
+            {
+                throw new Exception("User ou mot de passe éronné");
+            }
+
+        }
+        public MemberForm Insert(MemberForm entity)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Members> GetAll()
+        IEnumerable<MemberForm> IRepository<MemberForm>.GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Members? GetById(params object[] Id)
+        MemberForm? IRepository<MemberForm>.GetById(params object[] Id)
         {
             throw new NotImplementedException();
         }
 
-        public Members Insert(Members entity)
+        public bool Update(MemberForm entity)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(Members entity)
+        public bool Delete(MemberForm entity)
         {
             throw new NotImplementedException();
         }
