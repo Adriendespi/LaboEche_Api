@@ -1,0 +1,14 @@
+C:\Users\Rolf\source\repos\LaboEchec.Api\LaboEchec.DL\bin\Debug\net6.0\LaboEchec.DL.deps.json
+C:\Users\Rolf\source\repos\LaboEchec.Api\LaboEchec.DL\bin\Debug\net6.0\LaboEchec.DL.runtimeconfig.json
+C:\Users\Rolf\source\repos\LaboEchec.Api\LaboEchec.DL\bin\Debug\net6.0\LaboEchec.DL.dll
+C:\Users\Rolf\source\repos\LaboEchec.Api\LaboEchec.DL\bin\Debug\net6.0\LaboEchec.DL.pdb
+C:\Users\Rolf\source\repos\LaboEchec.Api\LaboEchec.DL\obj\Debug\net6.0\LaboEchec.DL.csproj.AssemblyReference.cache
+C:\Users\Rolf\source\repos\LaboEchec.Api\LaboEchec.DL\obj\Debug\net6.0\LaboEchec.DL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rolf\source\repos\LaboEchec.Api\LaboEchec.DL\obj\Debug\net6.0\LaboEchec.DL.AssemblyInfoInputs.cache
+C:\Users\Rolf\source\repos\LaboEchec.Api\LaboEchec.DL\obj\Debug\net6.0\LaboEchec.DL.AssemblyInfo.cs
+C:\Users\Rolf\source\repos\LaboEchec.Api\LaboEchec.DL\obj\Debug\net6.0\LaboEchec.DL.csproj.CoreCompileInputs.cache
+C:\Users\Rolf\source\repos\LaboEchec.Api\LaboEchec.DL\obj\Debug\net6.0\LaboEchec.DL.dll
+C:\Users\Rolf\source\repos\LaboEchec.Api\LaboEchec.DL\obj\Debug\net6.0\refint\LaboEchec.DL.dll
+C:\Users\Rolf\source\repos\LaboEchec.Api\LaboEchec.DL\obj\Debug\net6.0\LaboEchec.DL.pdb
+C:\Users\Rolf\source\repos\LaboEchec.Api\LaboEchec.DL\obj\Debug\net6.0\LaboEchec.DL.genruntimeconfig.cache
+C:\Users\Rolf\source\repos\LaboEchec.Api\LaboEchec.DL\obj\Debug\net6.0\ref\LaboEchec.DL.dll
