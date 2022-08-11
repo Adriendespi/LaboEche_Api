@@ -10,6 +10,7 @@ namespace LaboEchec.BLL.TournamentDTO
 {
     public class TournamentRegister
     {
+        public Guid Id { get; set; }
         [Required]
         public string Name { get; set; }
 

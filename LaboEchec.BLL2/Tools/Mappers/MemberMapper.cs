@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LaboEchec.BLL.Tools.Mappers
 {
-    public static class MemmberMapper
+    public static class MemberMapper
     {
         
 

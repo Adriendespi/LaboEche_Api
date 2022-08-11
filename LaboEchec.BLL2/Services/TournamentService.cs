@@ -1,12 +1,8 @@
 ﻿using LaboEchec.BLL.InterfacesServices;
+using LaboEchec.BLL.Tools.Mappers;
 using LaboEchec.BLL.TournamentDTO;
 using LaboEchec.Dal.Interfaces;
 using LaboEchec.DL.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LaboEchec.BLL.Services
 {
@@ -19,10 +15,15 @@ namespace LaboEchec.BLL.Services
             _ServiceTournament = tournamentService;
         }
 
-        public Tournament TournamentCreate(TournamentService newTournament)
+        public Tournament TournamentCreate(TournamentRegister newTournament)
         {
 
-            Tournament tEntity = newTournament.ToEntityTournament();
+            Tournament tEntity = newTournament.toEntityTournament();
+            tEntity.Creation_Date = DateTime.Now;
+            tEntity.Update_Date = DateTime.Now;
+            tEntity.Last_Inscription_Time = tEntity.Creation_Date.AddDays(tEntity.Number_Player_Max);
+            tEntity.Status_Tournament = 0;
+            
             
             return _ServiceTournament.Insert(tEntity);
         }
