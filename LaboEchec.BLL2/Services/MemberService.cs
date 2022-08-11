@@ -3,6 +3,7 @@ using LaboEchec.BLL.DTO.MemberDTO;
 using LaboEchec.BLL.InterfacesServices;
 using LaboEchec.BLL.MemberDTO;
 using LaboEchec.BLL.Tools;
+using LaboEchec.BLL.Tools.Mappers;
 using LaboEchec.Dal.Interfaces;
 using LaboEchec.DL.Entity;
 using System;
@@ -34,18 +35,19 @@ namespace LaboEchec.BLL.Services
             mEntity.Pwd = pwdHash;
 
 
-            int id = _Service.Insert(mEntity).ID;
+            
 
             if(mEntity.ELO is null)
             {
                 mEntity.ELO = 1200; 
             }
+            Guid id = _Service.Insert(mEntity).ID;
             // Recuperation du member
             return _Service.GetById(id);
         }
         public Members Login(MemberLogin mL)
         {
-            string hash = _MemberRepositery.GetHashByName(mL.Pseudo);
+            string hash = _Service.GetHashByName(mL.Pseudo);
 
             if (string.IsNullOrWhiteSpace(hash))
             {
@@ -55,7 +57,7 @@ namespace LaboEchec.BLL.Services
             // Validation du hash avec le password
             if (Argon2.Verify(hash, mL.Pwd))
             {
-                return _MemberRepositery.GetByUsername(mL.Pseudo);
+                return _Service.GetByUsername(mL.Pseudo);
             }
             else
             {

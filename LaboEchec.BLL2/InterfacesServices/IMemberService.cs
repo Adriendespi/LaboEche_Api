@@ -1,6 +1,6 @@
 
 ﻿using LaboEchec.BLL.DTO.MemberDTO;
-
+using LaboEchec.BLL.MemberDTO;
 using LaboEchec.Dal.Interfaces;
 using LaboEchec.DL.Entity;
 using System;
@@ -15,7 +15,8 @@ namespace LaboEchec.BLL.InterfacesServices
     public interface IMemberService
     {
         Members Register(MemberRegister member);
-        MemberLogin Login(string pseudo, string password);
+        Members Login(MemberLogin ml);
 
     }
+}
 

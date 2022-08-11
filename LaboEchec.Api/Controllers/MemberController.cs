@@ -7,9 +7,6 @@ namespace LaboEchec.Api.Controllers
     [ApiController]
     public class MemberController : ControllerBase
     {
-        public IActionResult Login(DTOIN)
-        {
-            return Ok("")
-        }
+        
     }
 }

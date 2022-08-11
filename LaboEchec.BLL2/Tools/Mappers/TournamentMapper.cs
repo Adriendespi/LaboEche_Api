@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LaboEchec.BLL.Tools.Mappers
 {
-    internal class TournamentMapper
+    public static  class TournamentMapper
     {
     }
 }
