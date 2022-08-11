@@ -15,7 +15,7 @@ namespace LaboEchec.Dal.Configurations
         {
             
             builder.Property(t => t.Round).HasDefaultValue(0);
-            builder.Property(t => t.Status_Tournament).HasDefaultValue(0);
+            //builder.Property(t => t.Status_Tournament).HasDefaultValue(0);
         }
     }
 }

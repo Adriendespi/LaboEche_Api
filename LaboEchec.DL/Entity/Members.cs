@@ -19,6 +19,7 @@ namespace LaboEchec.DL.Entity
 
         public int ELO { get; set; }
         public string status { get; set; }
+        public virtual ICollection<Tournament> Tournaments { get; set; }
 
     }
 
