@@ -1,4 +1,5 @@
-﻿using LaboEchec.Dal.Interfaces;
+﻿using LaboEchec.BLL.DTO.MemberDTO;
+using LaboEchec.Dal.Interfaces;
 using LaboEchec.DL.Entity;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace LaboEchec.BLL.InterfacesServices
 {
-    public interface IMemberService : IRepository<MemberForm>
+    public interface IMemberService
     {
-        MemberForm Register(MemberForm member);
-        MemberForm Login(string pseudo, string password);
+        Members Register(MemberRegister member);
+        MemberLogin Login(string pseudo, string password);
     }
 }

@@ -1,28 +1,28 @@
 ﻿using LaboEchec.DL.Enum;
-using System.ComponentModel.DataAnnotations;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace LaboEchec.DL.Entity
+namespace LaboEchec.BLL.DTO.MemberDTO
 {
-    public class Members 
+    public  class MemberRegister
     {
         public int ID { get; set; }
-        
+
         public string Name { get; set; }
-        
+
         public string Email { get; set; }
-        
+
         public string Pwd { get; set; }
-        
+
         public DateTime BirthDay { get; set; }
-        
+
         public Enum_Gender gender { get; set; }
 
         public int? ELO { get; set; }
-        public bool IsAdmin { get; set; }
-        
-        public virtual ICollection<Tournament> Tournaments { get; set; }
-
     }
 
-   
 }
+

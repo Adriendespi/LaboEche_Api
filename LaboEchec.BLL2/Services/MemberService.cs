@@ -1,4 +1,5 @@
 ﻿using Isopoh.Cryptography.Argon2;
+using LaboEchec.BLL.DTO.MemberDTO;
 using LaboEchec.BLL.InterfacesServices;
 using LaboEchec.BLL.Tools;
 using LaboEchec.Dal.Interfaces;
@@ -13,31 +14,31 @@ namespace LaboEchec.BLL.Services
 {
     public class MemberService : IMemberService
     {
-        IMemberRepository _MemberRepositery;
+        IMemberRepository _Service;
 
         public MemberService(IMemberRepository memberRepositery)
         {
-            _MemberRepositery = memberRepositery;
+            _Service = memberRepositery;
         }
 
-        public MemberForm Register(MemberForm member)
+        public Members Register(MemberRegister member)
         {
             // TODO Check If Pseudo and email exists!
-            if (!_MemberRepositery.CheckUser(member.Name, member.Email)) throw new Exception("Pseudo ou Email déjà utilisé");
+            if (!_Service.CheckUser(member.Name, member.Email)) throw new Exception("Pseudo ou Email déjà utilisé");
 
             // Hashé le MDP
             string pwdHash = Argon2.Hash(member.Pwd);
             // Ajout dans le DB
-            Members mEntity = member.ToDal();
+            Members mEntity = member.ToEntity();
             mEntity.Pwd = pwdHash;
 
-            int id = _MemberRepositery.Insert(mEntity).ID;
+            int id = _Service.Insert(mEntity).ID;
             if(mEntity.ELO is null)
             {
                 mEntity.ELO = 1200; 
             }
             // Recuperation du member
-            return _MemberRepositery.GetById(id).ToBll();
+            return _Service.GetById(id);
         }
         public MemberForm Login(string name, string password)
         {
@@ -59,29 +60,6 @@ namespace LaboEchec.BLL.Services
             }
 
         }
-        public MemberForm Insert(MemberForm entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerable<MemberForm> IRepository<MemberForm>.GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        MemberForm? IRepository<MemberForm>.GetById(params object[] Id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Update(MemberForm entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Delete(MemberForm entity)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

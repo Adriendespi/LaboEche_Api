@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LaboEchec.Api.Controllers
 {
-    public class MemberController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class MemberController : ControllerBase
     {
-        public IActionResult Index()
+        public IActionResult Login(DTOIN)
         {
-            return View();
+            return Ok("")
         }
     }
 }
