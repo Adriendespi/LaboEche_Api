@@ -17,6 +17,17 @@ namespace LaboEchec.BLL.MemberDTO
     {
         public string Token { get; set; }
     }
+
+    public class MemberDto
+    {
+        public Guid id { get; set; }
+        public string Pseudo { get; set; }
+        public string Pwd { get; set; }
+         
+        public string Token { get; set; }
+
+
+    }
    
 
 }

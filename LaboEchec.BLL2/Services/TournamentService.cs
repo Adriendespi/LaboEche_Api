@@ -19,12 +19,10 @@ namespace LaboEchec.BLL.Services
             _ServiceTournament = tournamentService;
         }
 
-        public Tournament TournamentCreate(TournamentService newTournament)
-        {
 
-            Tournament tEntity = newTournament.ToEntityTournament();
-            
-            return _ServiceTournament.Insert(tEntity);
+        Tournament ITournamentService.TournamentCreate(TournamentService newTournament)
+        {
+            throw new NotImplementedException();
         }
     }
 }
