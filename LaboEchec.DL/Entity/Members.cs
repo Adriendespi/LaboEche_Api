@@ -5,7 +5,7 @@ namespace LaboEchec.DL.Entity
 {
     public class Members 
     {
-        public int ID { get; set; }
+        public Guid ID { get; set; }
         
         public string Name { get; set; }
         
@@ -24,5 +24,7 @@ namespace LaboEchec.DL.Entity
 
     }
 
+
    
+
 }
