@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LaboEchec.BLL.DTO.MemberDTO
+namespace LaboEchec.BLL.MemberDTO
 {
     public class MemberLogin
     {
@@ -17,6 +17,6 @@ namespace LaboEchec.BLL.DTO.MemberDTO
     {
         public string Token { get; set; }
     }
-
+   
 
 }
