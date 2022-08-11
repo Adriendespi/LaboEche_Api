@@ -19,6 +19,8 @@ namespace LaboEchec.DL.Entity
 
         public int? ELO { get; set; }
         public bool IsAdmin { get; set; }
+        
+        public virtual ICollection<Tournament> Tournaments { get; set; }
 
     }
 

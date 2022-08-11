@@ -18,5 +18,10 @@ namespace LaboEchec.Dal.Repositories
         {
             throw new NotImplementedException();
         }
+        public override Tournament Insert(Tournament entity)
+        {
+
+            return base.Insert(entity); 
+        }
     }
 }
