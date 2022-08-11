@@ -1,5 +1,4 @@
-﻿using LaboEchec.BLL.MemberDTO;
-using LaboEchec.Dal.Interfaces;
+﻿using LaboEchec.BLL.Services;
 using LaboEchec.DL.Entity;
 using System;
 using System.Collections.Generic;
@@ -9,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace LaboEchec.BLL.InterfacesServices
 {
-    public interface IMemberService 
+    public interface ITournamentService
     {
-        MemberForm Register(MemberForm member);
-        Members Login(MemberLogin mL);
+        Tournament TournamentCreate(TournamentService newTournament)
     }
 }

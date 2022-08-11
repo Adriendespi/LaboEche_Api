@@ -1,5 +1,6 @@
 ﻿using Isopoh.Cryptography.Argon2;
 using LaboEchec.BLL.InterfacesServices;
+using LaboEchec.BLL.MemberDTO;
 using LaboEchec.BLL.Tools;
 using LaboEchec.Dal.Interfaces;
 using LaboEchec.DL.Entity;
@@ -31,7 +32,7 @@ namespace LaboEchec.BLL.Services
             Members mEntity = member.ToDal();
             mEntity.Pwd = pwdHash;
 
-            int id = _MemberRepositery.Insert(mEntity).ID;
+            Guid id = _MemberRepositery.Insert(mEntity).ID;
             if(mEntity.ELO is null)
             {
                 mEntity.ELO = 1200; 
@@ -39,9 +40,9 @@ namespace LaboEchec.BLL.Services
             // Recuperation du member
             return _MemberRepositery.GetById(id).ToBll();
         }
-        public MemberForm Login(string name, string password)
+        public Members Login(MemberLogin mL)
         {
-            string hash = _MemberRepositery.GetHashByName(name);
+            string hash = _MemberRepositery.GetHashByName(mL.Pseudo);
 
             if (string.IsNullOrWhiteSpace(hash))
             {
@@ -49,9 +50,9 @@ namespace LaboEchec.BLL.Services
             }
 
             // Validation du hash avec le password
-            if (Argon2.Verify(hash, password))
+            if (Argon2.Verify(hash, mL.Pwd))
             {
-                return _MemberRepositery.GetByUsername(name).ToBll();
+                return _MemberRepositery.GetByUsername(mL.Pseudo);
             }
             else
             {
@@ -59,29 +60,6 @@ namespace LaboEchec.BLL.Services
             }
 
         }
-        public MemberForm Insert(MemberForm entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerable<MemberForm> IRepository<MemberForm>.GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        MemberForm? IRepository<MemberForm>.GetById(params object[] Id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Update(MemberForm entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Delete(MemberForm entity)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
