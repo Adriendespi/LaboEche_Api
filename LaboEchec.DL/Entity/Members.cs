@@ -17,8 +17,8 @@ namespace LaboEchec.DL.Entity
         
         public Enum_Gender gender { get; set; }
 
-        public int ELO { get; set; }
-        public string status { get; set; }
+        public int? ELO { get; set; }
+        public bool IsAdmin { get; set; }
 
     }
 

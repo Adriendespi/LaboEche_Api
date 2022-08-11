@@ -17,7 +17,8 @@ namespace LaboEchec.BLL.Tools
                 ID = member.ID,
                 Email = member.Email,
                 Name = member.Name,
-                Pwd = member.Pwd
+                Pwd = member.Pwd,
+                ELO = (int)member.ELO
             };
 
         }
@@ -27,9 +28,11 @@ namespace LaboEchec.BLL.Tools
             return new Members
             {
                 ID = member.ID,
+
                 Email = member.Email,
                 Name = member.Name,
-                Pwd = member.Pwd
+                Pwd = member.Pwd,
+                ELO = member.ELO
             };
         }
     }

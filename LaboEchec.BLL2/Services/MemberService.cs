@@ -32,7 +32,10 @@ namespace LaboEchec.BLL.Services
             mEntity.Pwd = pwdHash;
 
             int id = _MemberRepositery.Insert(mEntity).ID;
-
+            if(mEntity.ELO is null)
+            {
+                mEntity.ELO = 1200; 
+            }
             // Recuperation du member
             return _MemberRepositery.GetById(id).ToBll();
         }
