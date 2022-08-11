@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LaboEchec.BLL.DTO.MemberDTO
+{
+    public class MemberLogin
+    {
+        public string Pseudo { get; set; }
+        public string Pwd { get; set; }
+    }
+
+
+    public class MemberLoginOut
+    {
+        public string Token { get; set; }
+    }
+
+
+}
