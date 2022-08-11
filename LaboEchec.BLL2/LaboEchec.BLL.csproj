@@ -12,6 +12,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LAboEchec.Dal\LaboEchec.Dal.csproj" />
+    <ProjectReference Include="..\LaboEchec.DL\LaboEchec.DL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DTO\TournamentDTO\" />
   </ItemGroup>
 
 </Project>

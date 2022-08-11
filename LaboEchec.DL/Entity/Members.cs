@@ -24,5 +24,7 @@ namespace LaboEchec.DL.Entity
 
     }
 
-    
+
+   
+
 }
