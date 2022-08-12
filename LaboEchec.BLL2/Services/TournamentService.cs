@@ -1,8 +1,11 @@
-﻿using LaboEchec.BLL.InterfacesServices;
+﻿using LaboEchec.BLL.DTO.TournamentDTO;
+using LaboEchec.BLL.InterfacesServices;
 using LaboEchec.BLL.Tools.Mappers;
 using LaboEchec.BLL.TournamentDTO;
 using LaboEchec.Dal.Interfaces;
 using LaboEchec.DL.Entity;
+using LaboEchec.DL.Enum;
+using System.Collections.Generic;
 
 namespace LaboEchec.BLL.Services
 {
@@ -26,6 +29,22 @@ namespace LaboEchec.BLL.Services
             
             
             return _ServiceTournament.Insert(tEntity);
+        }
+        public bool TournementDelete(Tournament tournament)
+        {
+            if(tournament.Status_Tournament == Enum_Status.InProgress)
+            {
+                return false;
+            }
+            else
+            {
+                return _ServiceTournament.Delete(tournament);
+            }
+        }
+        public IEnumerable<TournamentLast10Dto> GetLast10()
+        {
+             IEnumerable<TournamentLast10Dto> malist = _ServiceTournament.GetLast10OrderByDate().Select(m => m.ToApi());
+            return malist;
         }
     }
 }

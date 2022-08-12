@@ -23,5 +23,13 @@ namespace LaboEchec.Dal.Repositories
 
             return base.Insert(entity); 
         }
+        public bool Delete(Tournament entity) 
+        {
+           return base.Delete(entity);
+        }
+        public IEnumerable<Tournament> GetFirst10OrderByDate()
+        {
+            return _Context.tournaments.OrderBy(t => t.Update_Date).Where(t => t.Status_Tournament != DL.Enum.Enum_Status.Finish);
+        }
     }
 }
