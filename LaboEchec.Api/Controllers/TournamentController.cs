@@ -36,5 +36,33 @@ namespace LaboEchec.Api.Controllers
                 return BadRequest(e.Message);
             }
         }
+        [HttpDelete]
+        [Authorize("Admin")]
+        public IActionResult TournamentDelete(int id)
+        {
+            try
+            {
+                _tournamentService.TournementDelete(id);
+                return Ok();
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+        [HttpGet]
+
+        public IActionResult TournamentLast10()
+        {
+            try
+            {
+                _tournamentService.GetLast10();
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

@@ -37,8 +37,9 @@ namespace LaboEchec.BLL.Services
             
             return _ServiceTournament.Insert(tEntity);
         }
-        public bool TournementDelete(Tournament tournament)
+        public bool TournementDelete(int id)
         {
+            Tournament tournament= _ServiceTournament.GetById(id);
             if(tournament.Status_Tournament == Enum_Status.InProgress)
             {
                 return false;
