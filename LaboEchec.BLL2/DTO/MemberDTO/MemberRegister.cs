@@ -9,7 +9,7 @@ namespace LaboEchec.BLL.DTO.MemberDTO
 {
     public  class MemberRegister
     {
-        public int ID { get; set; }
+        public Guid ID { get; set; }
 
         public string Name { get; set; }
 

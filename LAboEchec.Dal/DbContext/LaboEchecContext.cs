@@ -13,8 +13,7 @@ namespace LaboEchec.DL
     {
         public DbSet<Members> Members { get; set; }
         public DbSet<Tournament> tournaments { get; set; }
-
-        public LaboEchecContext(DbContextOptions options): base(options)
+        public LaboEchecContext(DbContextOptions options) : base(options)
         {
 
         }

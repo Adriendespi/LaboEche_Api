@@ -1,4 +1,5 @@
-﻿using LaboEchec.DL.Entity;
+﻿using LaboEchec.BLL.MemberDTO;
+using LaboEchec.DL.Entity;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -18,7 +19,7 @@ namespace LaboEchec.Api.Infrastructure
             _secret = config.GetSection("TokenInfo").GetSection("secret").Value;
         }
 
-        public string GenerateToken(Members m)
+        public string GenerateToken(MemberDto m)
         {
             if (m is null) throw new ArgumentNullException();
 
@@ -29,8 +30,8 @@ namespace LaboEchec.Api.Infrastructure
             //Création du payload / info utilisateur
             Claim[] claims = new[]
             {
-                new Claim(ClaimTypes.Surname, m.Name),
-                new Claim(ClaimTypes.Sid, m.ID.ToString())
+                new Claim(ClaimTypes.Surname, m.Pseudo),
+                new Claim(ClaimTypes.Sid, m.id.ToString())
             };
 
             //Configuration du token

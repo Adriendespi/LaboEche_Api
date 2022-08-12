@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LaboEchec.BLL2\LaboEchec.BLL.csproj" />
     <ProjectReference Include="..\LAboEchec.Dal\LaboEchec.Dal.csproj" />
   </ItemGroup>
 
