@@ -19,7 +19,7 @@ namespace LaboEchec.Api.Controllers
         }
 
         [HttpPost]
-        [Authorize("Admin")] //IsAdmin == true
+        //[Authorize("Admin") //IsAdmin == true
 
         public IActionResult TournamentCreate(TournamentRegister tr)
         {

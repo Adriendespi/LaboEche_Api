@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LaboEchec.Dal.Repositories
 {
-    internal class TournamentRepository : RepositoryBase<Tournament>, ITournamentRepository
+    public class TournamentRepository : RepositoryBase<Tournament>, ITournamentRepository
     {
         public TournamentRepository(LaboEchecContext context)
             : base(context) { }

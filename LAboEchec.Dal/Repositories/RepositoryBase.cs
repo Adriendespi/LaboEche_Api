@@ -37,9 +37,9 @@ namespace LaboEchec.Dal.Repositories
 
         public virtual TEntity Insert(TEntity entity)
         {
-            TEntity newMember = _Context.Add(entity).Entity;
+            _Context.Add(entity);
             _Context.SaveChanges();
-            return newMember;
+            return entity;
         }
 
         public virtual bool Update(TEntity entity)
