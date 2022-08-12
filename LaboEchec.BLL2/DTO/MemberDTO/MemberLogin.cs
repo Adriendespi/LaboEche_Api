@@ -25,6 +25,7 @@ namespace LaboEchec.BLL.MemberDTO
         public string Pwd { get; set; }
          
         public string Token { get; set; }
+        public bool IsAdmin { get; set; }
 
 
     }

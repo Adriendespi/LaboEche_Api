@@ -22,6 +22,7 @@ namespace LaboEchec.BLL.DTO.MemberDTO
         public Enum_Gender gender { get; set; }
 
         public int? ELO { get; set; }
+        public bool IsAdmin { get; set; }   
     }
 
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace LaboEchec.BLL.InterfacesServices
 {
     public interface ITournamentService

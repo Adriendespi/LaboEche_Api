@@ -28,11 +28,16 @@ namespace LaboEchec.Api.Infrastructure
             SigningCredentials credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha512);
 
             //Création du payload / info utilisateur
-            Claim[] claims = new[]
+            List<Claim> claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Surname, m.Pseudo),
                 new Claim(ClaimTypes.Sid, m.id.ToString())
+                
             };
+            if(m.IsAdmin)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, "Admin"));
+            }
 
             //Configuration du token
             JwtSecurityToken token = new JwtSecurityToken(

@@ -21,7 +21,8 @@ namespace LaboEchec.BLL.Tools.Mappers
                     Email = member.Email,
                     Name = member.Name,
                     Pwd = member.Pwd,
-                    ELO = member.ELO
+                    ELO = member.ELO,
+                    IsAdmin = member.IsAdmin
               };
           }
 

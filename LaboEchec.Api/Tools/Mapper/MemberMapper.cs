@@ -11,7 +11,8 @@ namespace LaboEchec.Api.Tools.Mapper
             {
                 id = members.ID,
                 Pseudo = members.Name,
-                Pwd = members.Pwd
+                Pwd = members.Pwd,
+                IsAdmin = members.IsAdmin
             };
         }
     }
