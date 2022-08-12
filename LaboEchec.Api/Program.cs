@@ -1,5 +1,9 @@
 
 using LaboEchec.Api.Infrastructure;
+using LaboEchec.BLL.InterfacesServices;
+using LaboEchec.BLL.Services;
+using LaboEchec.Dal.Interfaces;
+using LaboEchec.Dal.Repositories;
 using LaboEchec.DL;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +19,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<LaboEchecContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("default")));
+
+builder.Services.AddScoped<IMemberService,MemberService>();
+builder.Services.AddScoped<ITournamentService,TournamentService>();
+
+builder.Services.AddScoped<ITournamentRepository, TournamentRepository>();
+builder.Services.AddScoped<IMemberRepository, MemberRepository>();
 
 builder.Services.AddSingleton<TokenManager>();
 

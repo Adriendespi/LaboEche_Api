@@ -7,9 +7,9 @@ namespace LaboEchec.Api.Tools.Mapper
     {
         
 
-        public static BLL.Services.TournamentRegister ToBll(this BLL.TournamentDTO.TournamentRegister members)
+        public static TournamentRegister ToBll(this TournamentRegister ts)
         {
-            return new TournamentService
+            return new TournamentRegister
             {
                 Name = ts.Name,
                 Location = ts.Location,

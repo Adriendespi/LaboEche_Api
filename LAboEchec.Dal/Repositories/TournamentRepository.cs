@@ -9,15 +9,12 @@ using System.Threading.Tasks;
 
 namespace LaboEchec.Dal.Repositories
 {
-    internal class TournamentRepository : RepositoryBase<Tournament>, ITournamentRepository
+    public class TournamentRepository : RepositoryBase<Tournament>, ITournamentRepository
     {
         public TournamentRepository(LaboEchecContext context)
             : base(context) { }
 
-        public IEnumerable<Members> GetLast10OrderByDate()
-        {
-            throw new NotImplementedException();
-        }
+        
         public override Tournament Insert(Tournament entity)
         {
 
@@ -27,7 +24,7 @@ namespace LaboEchec.Dal.Repositories
         {
            return base.Delete(entity);
         }
-        public IEnumerable<Tournament> GetFirst10OrderByDate()
+        public IEnumerable<Tournament> GetLast10OrderByDate()
         {
             return _Context.tournaments.OrderBy(t => t.Update_Date).Where(t => t.Status_Tournament != DL.Enum.Enum_Status.Finish);
         }

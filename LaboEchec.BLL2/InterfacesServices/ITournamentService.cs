@@ -1,4 +1,5 @@
-﻿using LaboEchec.BLL.Services;
+﻿using LaboEchec.BLL.DTO.TournamentDTO;
+using LaboEchec.BLL.Services;
 using LaboEchec.BLL.TournamentDTO;
 using LaboEchec.DL.Entity;
 using System;
@@ -12,6 +13,8 @@ namespace LaboEchec.BLL.InterfacesServices
 {
     public interface ITournamentService
     {
-        Tournament TournamentCreate(TournamentService newTournament)
+        Tournament TournamentCreate(TournamentRegister newTournament);
+        bool TournementDelete(int id);
+        IEnumerable<TournamentLast10Dto> GetLast10();
     }
 }

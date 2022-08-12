@@ -28,7 +28,7 @@ namespace LaboEchec.Dal.Repositories
         }
         public bool CheckUser(string name, string email)
         {
-            return (_Context.Members.Any(m => m.Name == name || m.Email == email));
+            return !(_Context.Members.Any(m => m.Name == name || m.Email == email));
            
         }
         public string? GetHashByName(string pseudo)

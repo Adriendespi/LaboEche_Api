@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace LaboEchec.DL.Migrations
+namespace LaboEchec.Dal.Migrations
 {
     [DbContext(typeof(LaboEchecContext))]
-    [Migration("20220808132057_Initial")]
-    partial class Initial
+    [Migration("20220812141334_intitdb")]
+    partial class intitdb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,56 +24,53 @@ namespace LaboEchec.DL.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("LaboEchec.DL.Members", b =>
+            modelBuilder.Entity("LaboEchec.DL.Entity.Members", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("BirthDay")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ELO")
+                    b.Property<int?>("ELO")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Pwd")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("TournamentId")
-                        .HasColumnType("int");
-
                     b.Property<int>("gender")
                         .HasColumnType("int");
 
-                    b.Property<string>("status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("ID");
 
-                    b.HasIndex("TournamentId");
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("Members");
                 });
 
-            modelBuilder.Entity("LaboEchec.DL.Tournament", b =>
+            modelBuilder.Entity("LaboEchec.DL.Entity.Tournament", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Category_Tournament")
                         .HasColumnType("int");
@@ -104,7 +101,9 @@ namespace LaboEchec.DL.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("Round")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.Property<int>("Status_Tournament")
                         .HasColumnType("int");
@@ -120,16 +119,34 @@ namespace LaboEchec.DL.Migrations
                     b.ToTable("tournaments");
                 });
 
-            modelBuilder.Entity("LaboEchec.DL.Members", b =>
+            modelBuilder.Entity("MembersTournament", b =>
                 {
-                    b.HasOne("LaboEchec.DL.Tournament", null)
-                        .WithMany("Players")
-                        .HasForeignKey("TournamentId");
+                    b.Property<Guid>("PlayersID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("TournamentsId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("PlayersID", "TournamentsId");
+
+                    b.HasIndex("TournamentsId");
+
+                    b.ToTable("MembersTournament");
                 });
 
-            modelBuilder.Entity("LaboEchec.DL.Tournament", b =>
+            modelBuilder.Entity("MembersTournament", b =>
                 {
-                    b.Navigation("Players");
+                    b.HasOne("LaboEchec.DL.Entity.Members", null)
+                        .WithMany()
+                        .HasForeignKey("PlayersID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LaboEchec.DL.Entity.Tournament", null)
+                        .WithMany()
+                        .HasForeignKey("TournamentsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

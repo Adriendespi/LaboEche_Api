@@ -4,18 +4,16 @@ using LaboEchec.DL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace LaboEchec.DL.Migrations
+namespace LaboEchec.Dal.Migrations
 {
     [DbContext(typeof(LaboEchecContext))]
-    [Migration("20220811072138_Initdb")]
-    partial class Initdb
+    partial class LaboEchecContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,21 +24,22 @@ namespace LaboEchec.DL.Migrations
 
             modelBuilder.Entity("LaboEchec.DL.Entity.Members", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("BirthDay")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ELO")
+                    b.Property<int?>("ELO")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -53,10 +52,6 @@ namespace LaboEchec.DL.Migrations
 
                     b.Property<int>("gender")
                         .HasColumnType("int");
-
-                    b.Property<string>("status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
@@ -71,11 +66,9 @@ namespace LaboEchec.DL.Migrations
 
             modelBuilder.Entity("LaboEchec.DL.Entity.Tournament", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Category_Tournament")
                         .HasColumnType("int");
@@ -126,11 +119,11 @@ namespace LaboEchec.DL.Migrations
 
             modelBuilder.Entity("MembersTournament", b =>
                 {
-                    b.Property<int>("PlayersID")
-                        .HasColumnType("int");
+                    b.Property<Guid>("PlayersID")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("TournamentsId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("TournamentsId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("PlayersID", "TournamentsId");
 
