@@ -1,4 +1,5 @@
 ﻿using LaboEchec.BLL.Services;
+using LaboEchec.BLL.TournamentDTO;
 using LaboEchec.DL.Entity;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,6 @@ namespace LaboEchec.BLL.InterfacesServices
 {
     public interface ITournamentService
     {
-        Tournament TournamentCreate(TournamentService newTournament)
+        Tournament TournamentCreate(TournamentRegister newTournament);
     }
 }
