@@ -16,6 +16,9 @@ namespace LaboEchec.DL
         public LaboEchecContext(DbContextOptions options) : base(options)
         {
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(@"Data Source=tfnsdotde0407b;Initial Catalog=LaboEchec ;User ID=StudentAdmin;Password=123456a.;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

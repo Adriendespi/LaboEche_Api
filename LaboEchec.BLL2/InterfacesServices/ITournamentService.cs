@@ -12,6 +12,6 @@ namespace LaboEchec.BLL.InterfacesServices
 {
     public interface ITournamentService
     {
-        Tournament TournamentCreate(TournamentRegister newTournament);
+        Tournament TournamentCreate(TournamentService newTournament)
     }
 }
