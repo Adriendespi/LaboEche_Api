@@ -58,5 +58,19 @@ namespace LaboEchec.Api.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        public IActionResult UnRegistered(Members member)
+        {
+            try
+            {
+                _memberService.UnRegistered(member);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+        }
     }
 }

@@ -64,5 +64,18 @@ namespace LaboEchec.Api.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        public IActionResult TournamentDetails(int id)
+        {
+            try 
+            { 
+            _tournamentService.GetByIdForDetails(id);
+            return Ok();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

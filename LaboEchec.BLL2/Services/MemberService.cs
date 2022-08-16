@@ -70,5 +70,22 @@ namespace LaboEchec.BLL.Services
 
         }
 
+        public Members UnRegistered(Tournament tournament)
+        {
+            Members LoginMember = User.Claims;
+            if (tournament.Status_Tournament == DL.Enum.Enum_Status.InProgress)
+            {
+                throw new Exception("Le Tournoi à commencé, vous ne pouvez pas vous désincrire");
+            }
+
+            if (tournament.Players.FirstOrDefault() == LoginMember)
+            { 
+                return _Service.Delete(tournament.Players[]); //
+
+
+            }
+            throw new Exception("Vous n'êtes pas inscrit");
+        }
+
     }
 }

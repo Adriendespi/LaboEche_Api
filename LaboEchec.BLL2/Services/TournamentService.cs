@@ -54,5 +54,12 @@ namespace LaboEchec.BLL.Services
              IEnumerable<TournamentLast10Dto> malist = _ServiceTournament.GetLast10OrderByDate().Select(m => m.ToApi());
             return malist;
         }
+
+        public Tournament GetByIdForDetails(int id)
+        {
+            Tournament tournament = _ServiceTournament.GetById(id);
+            
+            return tournament;
+        }
     }
 }
