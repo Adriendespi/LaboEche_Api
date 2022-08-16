@@ -28,5 +28,15 @@ namespace LaboEchec.Dal.Repositories
         {
             return _Context.tournaments.OrderBy(t => t.Update_Date).Where(t => t.Status_Tournament != DL.Enum.Enum_Status.Finish);
         }
+        public Tournament GetByName(string name)
+        {
+            return  _Context.Set<Tournament>().Find(name);
+        }
+        public void TournamentRegister(Tournament t, Members m)
+        {
+            t.Players.Add(m);
+            m.Tournaments.Add(t);
+        }
+        
     }
 }

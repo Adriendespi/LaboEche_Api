@@ -10,5 +10,9 @@ namespace LaboEchec.Dal.Interfaces
     public interface ITournamentRepository :IRepository<Tournament>
     {
         IEnumerable<Tournament> GetLast10OrderByDate();
+        Tournament GetByName(string name);
+
+        void TournamentRegister(Tournament t, Members m);
+        
     }
 }

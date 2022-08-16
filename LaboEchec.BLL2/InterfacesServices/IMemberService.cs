@@ -17,6 +17,7 @@ namespace LaboEchec.BLL.InterfacesServices
         Members Register(MemberRegister member);
         Members Login(MemberLogin ml);
 
+
     }
 }
 

@@ -12,10 +12,12 @@ namespace LaboEchec.BLL.Services
     public class TournamentService : ITournamentService
     {
         ITournamentRepository _ServiceTournament;
+        IMemberRepository _ServiceMember;
 
-        public TournamentService(ITournamentRepository tournamentService)
+        public TournamentService(ITournamentRepository tournamentService, IMemberRepository serviceMember)
         {
             _ServiceTournament = tournamentService;
+            _ServiceMember = serviceMember;
         }
 
         public Tournament TournamentCreate(TournamentRegister newTournament)
@@ -54,5 +56,65 @@ namespace LaboEchec.BLL.Services
              IEnumerable<TournamentLast10Dto> malist = _ServiceTournament.GetLast10OrderByDate().Select(m => m.ToApi());
             return malist;
         }
+        public void TournamentRegister(string name,int id)
+        {
+            Tournament t= _ServiceTournament.GetByName(name);
+            Members m = _ServiceMember.GetById(id);
+
+            if(t.Last_Inscription_Time < DateTime.Now)
+            {
+                throw new Exception("La date d'inscription est depasser");
+            }
+            if (t.Status_Tournament != Enum_Status.Waiting)
+            {
+                throw new Exception("Le Tournoi est fini ou deja commencer");
+            }
+            if (t.Players.Any(me => me.Name == m.Name))
+            {
+                throw new Exception("Vous etes deja Inscrit");
+            }
+            if(t.Players.Count() > t.Number_Player_Max)
+            {
+                throw new Exception("Le nombre de joueur max est atteint");
+            }
+            int age = CalculAge(m.BirthDay, t.Last_Inscription_Time);
+            if(age < 18)
+            {
+                if (t.Category_Tournament != Enum_Grade.Junior)
+                {
+                    throw new Exception("Vous N'avez pas l'age requis");
+                }
+            }
+            if (age >= 60)
+            {
+                if (t.Category_Tournament != Enum_Grade.Senior)
+                {
+                    throw new Exception("Vous N'avez pas l'age requis");
+                }
+            }
+
+            if(m.ELO<t.Elo_Player_Min || m.ELO > t.Elo_Player_Max)
+            {
+                throw new Exception("Vous n'avez pas le bon niveau");
+            }
+            if(t.WomenOnly && m.gender == Enum_Gender.Male)
+            {
+                throw new Exception("Ce tournoi est reserver au femme");
+            }
+            _ServiceTournament.TournamentRegister(t, m);
+
+
+        }
+
+        private int CalculAge(DateTime anniversaire, DateTime tournoidate)
+        {
+            DateTime now = tournoidate;
+            int age = now.Year - anniversaire.Year;
+            if (anniversaire > now.AddYears(-age))
+                age--;
+            return age;
+        }
+
+
     }
 }
