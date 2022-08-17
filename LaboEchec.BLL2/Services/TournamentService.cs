@@ -12,10 +12,12 @@ namespace LaboEchec.BLL.Services
     public class TournamentService : ITournamentService
     {
         ITournamentRepository _ServiceTournament;
+        IMemberRepository _ServiceMember;
 
-        public TournamentService(ITournamentRepository tournamentService)
+        public TournamentService(ITournamentRepository tournamentService, IMemberRepository memberservice)
         {
             _ServiceTournament = tournamentService;
+            _ServiceMember = memberservice;
         }
 
         public Tournament TournamentCreate(TournamentRegister newTournament)
@@ -60,6 +62,27 @@ namespace LaboEchec.BLL.Services
             Tournament tournament = _ServiceTournament.GetById(id);
             
             return tournament;
+        }
+
+        public Members UnRegistered(int id, string tournament)
+        {
+            Members LoginMember = _ServiceMember.GetById(id);
+            Tournament t = _ServiceTournament.GetByName(tournament);
+
+            if (t.Status_Tournament == Enum_Status.InProgress)
+            {
+                throw new Exception("Le Tournoi à commencé, vous ne pouvez pas vous désincrire");
+            }
+            foreach( Members m in t.Players)
+            {
+                if(m.ID == LoginMember.ID)
+                {
+                    t.Players.Remove(LoginMember);
+                }
+            }
+            
+           
+            throw new Exception("Vous n'êtes pas inscrit");
         }
     }
 }
