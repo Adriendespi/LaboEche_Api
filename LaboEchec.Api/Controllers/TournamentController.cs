@@ -4,6 +4,7 @@ using LaboEchec.DL.Entity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace LaboEchec.Api.Controllers
 {
@@ -69,21 +70,32 @@ namespace LaboEchec.Api.Controllers
             }
         }
 
+        [HttpPost]
+        public IActionResult TournamentRegister(string name)
+        {
+            try
+            {
+                int id = Int32.Parse(User.FindFirstValue("Sid"));
+                _tournamentService.TournamentRegister(name,id);
+                return Ok();
+
+
         public IActionResult TournamentDetails(int id)
         {
             try 
             { 
             _tournamentService.GetByIdForDetails(id);
             return Ok();
+
             }
             catch(Exception ex)
             {
                 return BadRequest(ex.Message);
             }
+
+
         }
 
-
-       
 
     }
 }

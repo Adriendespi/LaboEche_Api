@@ -17,6 +17,10 @@ namespace LaboEchec.BLL.InterfacesServices
         bool TournementDelete(int id);
         IEnumerable<TournamentLast10Dto> GetLast10();
 
+        void TournamentRegister(string name, int id);
+
+
         Tournament GetByIdForDetails(int id);
+
     }
 }
