@@ -26,7 +26,7 @@ namespace LaboEchec.Api.Controllers
         }
 
         [HttpPost]
-        //[Authorize("Admin") //IsAdmin == true
+        [Authorize("Admin")] //IsAdmin == true
 
         public IActionResult TournamentCreate(TournamentRegister tr)
         {
@@ -72,7 +72,7 @@ namespace LaboEchec.Api.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("Register")]
         public IActionResult TournamentRegister(string name)
         {
             try
@@ -88,7 +88,7 @@ namespace LaboEchec.Api.Controllers
             }
          }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public IActionResult TournamentDetails(int id)
         {
             try 
@@ -104,7 +104,7 @@ namespace LaboEchec.Api.Controllers
 
 
         }
-        [HttpDelete("login")]
+        [HttpDelete("Unregistered")]
         public IActionResult UnRegistered(string name)
         {
 

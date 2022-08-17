@@ -17,7 +17,7 @@ namespace LaboEchec.BLL.Tools.Mappers
           {
               return new Members
               {
-                    ID = member.ID,
+                    ID = Guid.NewGuid(),
                     Email = member.Email,
                     Name = member.Name,
                     Pwd = member.Pwd,
