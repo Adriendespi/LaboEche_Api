@@ -14,12 +14,12 @@ namespace LaboEchec.BLL.InterfacesServices
     public interface ITournamentService
     {
         Tournament TournamentCreate(TournamentRegister newTournament);
-        bool TournementDelete(int id);
+        bool TournementDelete(Guid ID);
         IEnumerable<TournamentLast10Dto> GetLast10();
 
-        void TournamentRegister(string name, int id);
+        void TournamentRegister(string name, Guid id);
 
-        void UnRegistered(int id, string tournament);
+        void UnRegistered(Guid id, string tournament);
         Tournament GetByIdForDetails(int id);
 
     }

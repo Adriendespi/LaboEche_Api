@@ -43,13 +43,13 @@ namespace LaboEchec.Api.Controllers
                 return BadRequest(e.Message);
             }
         }
-        [HttpDelete]
+        [HttpDelete("{ID}")]
         [Authorize("Admin")]
-        public IActionResult TournamentDelete(int id)
+        public IActionResult TournamentDelete(Guid ID)
         {
             try
             {
-                _tournamentService.TournementDelete(id);
+                _tournamentService.TournementDelete(ID);
                 return Ok();
             }
             catch(Exception e)
@@ -77,7 +77,7 @@ namespace LaboEchec.Api.Controllers
         {
             try
             {
-                int id = Int32.Parse(User.FindFirstValue("Sid"));
+                Guid id = new   Guid(User.FindFirstValue("Sid"));
                 _tournamentService.TournamentRegister(name, id);
                 return Ok();
 
@@ -110,7 +110,7 @@ namespace LaboEchec.Api.Controllers
 
             try
             {
-                _tournamentService.UnRegistered(Int32.Parse(User.FindFirstValue("Sid")),name);
+                _tournamentService.UnRegistered(new Guid(User.FindFirstValue("Sid")),name);
                 return Ok();
             }
             catch (Exception e)

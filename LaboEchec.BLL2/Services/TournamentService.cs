@@ -41,7 +41,7 @@ namespace LaboEchec.BLL.Services
             
             return _ServiceTournament.Insert(tEntity);
         }
-        public bool TournementDelete(int id)
+        public bool TournementDelete(Guid id)
         {
             Tournament tournament= _ServiceTournament.GetById(id);
             if(tournament.Status_Tournament == Enum_Status.InProgress)
@@ -59,7 +59,7 @@ namespace LaboEchec.BLL.Services
             return malist;
         }
 
-        public void TournamentRegister(string name,int id)
+        public void TournamentRegister(string name,Guid id)
         {
             Tournament t= _ServiceTournament.GetByName(name);
             Members m = _ServiceMember.GetById(id);
@@ -128,7 +128,7 @@ namespace LaboEchec.BLL.Services
             return tournament;
         }
 
-        public void UnRegistered(int id, string tournament)
+        public void UnRegistered(Guid id, string tournament)
         {
             Members LoginMember = _ServiceMember.GetById(id);
             Tournament t = _ServiceTournament.GetByName(tournament);
