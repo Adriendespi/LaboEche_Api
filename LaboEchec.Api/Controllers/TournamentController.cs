@@ -1,5 +1,6 @@
 ﻿using LaboEchec.BLL.InterfacesServices;
 using LaboEchec.BLL.TournamentDTO;
+using LaboEchec.DL.Entity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,11 +13,14 @@ namespace LaboEchec.Api.Controllers
     public class TournamentController : ControllerBase
     {
         public ITournamentService _tournamentService;
+        
 
 
         public TournamentController(ITournamentService tournamentService)
         {
             _tournamentService = tournamentService;
+            
+
         }
 
         [HttpPost]
@@ -65,6 +69,7 @@ namespace LaboEchec.Api.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
         [HttpPost]
         public IActionResult TournamentRegister(string name)
         {
@@ -73,13 +78,24 @@ namespace LaboEchec.Api.Controllers
                 int id = Int32.Parse(User.FindFirstValue("Sid"));
                 _tournamentService.TournamentRegister(name,id);
                 return Ok();
+
+
+        public IActionResult TournamentDetails(int id)
+        {
+            try 
+            { 
+            _tournamentService.GetByIdForDetails(id);
+            return Ok();
+
             }
             catch(Exception ex)
             {
                 return BadRequest(ex.Message);
             }
 
+
         }
+
 
     }
 }

@@ -18,6 +18,10 @@ namespace LaboEchec.BLL.InterfacesServices
         Members Login(MemberLogin ml);
 
 
+=======
+        Members UnRegistered(int id, string tournament);
+
+
     }
 }
 

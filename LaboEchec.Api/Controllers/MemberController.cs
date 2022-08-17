@@ -6,6 +6,7 @@ using LaboEchec.BLL.MemberDTO;
 using LaboEchec.DL.Entity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace LaboEchec.Api.Controllers
 {
@@ -51,6 +52,21 @@ namespace LaboEchec.Api.Controllers
                 currentUser.Token = _tokenManager.GenerateToken(currentUser);
 
                 return Ok(currentUser.Token);
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+        }
+        [HttpDelete("login")]
+        public IActionResult UnRegistered(Members member)
+        {
+            
+            try
+            {
+                _memberService.UnRegistered(Int32.Parse(User.FindFirstValue("Sid")));
+                return Ok();
             }
             catch (Exception e)
             {

@@ -17,10 +17,12 @@ namespace LaboEchec.BLL.Services
     public class MemberService : IMemberService
     {
         IMemberRepository _Service;
+        ITournamentRepository _Turnament;
 
         public MemberService(IMemberRepository memberRepositery)
         {
             _Service = memberRepositery;
+            
         }
 
         public Members Register(MemberRegister member)
