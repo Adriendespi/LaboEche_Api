@@ -19,7 +19,7 @@ namespace LaboEchec.BLL.InterfacesServices
 
         void TournamentRegister(string name, int id);
 
-
+        void UnRegistered(int id, string tournament);
         Tournament GetByIdForDetails(int id);
 
     }

@@ -14,11 +14,13 @@ namespace LaboEchec.Api.Controllers
     {
         public ITournamentService _tournamentService;
         
+        
 
 
         public TournamentController(ITournamentService tournamentService)
         {
             _tournamentService = tournamentService;
+            
             
 
         }
@@ -76,10 +78,17 @@ namespace LaboEchec.Api.Controllers
             try
             {
                 int id = Int32.Parse(User.FindFirstValue("Sid"));
-                _tournamentService.TournamentRegister(name,id);
+                _tournamentService.TournamentRegister(name, id);
                 return Ok();
 
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+         }
 
+        [HttpGet]
         public IActionResult TournamentDetails(int id)
         {
             try 
@@ -94,6 +103,21 @@ namespace LaboEchec.Api.Controllers
             }
 
 
+        }
+        [HttpDelete("login")]
+        public IActionResult UnRegistered(string name)
+        {
+
+            try
+            {
+                _tournamentService.UnRegistered(Int32.Parse(User.FindFirstValue("Sid")),name);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
         }
 
 

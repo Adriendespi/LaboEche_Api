@@ -59,20 +59,6 @@ namespace LaboEchec.Api.Controllers
                 return BadRequest(e.Message);
             }
         }
-        [HttpDelete("login")]
-        public IActionResult UnRegistered(Members member)
-        {
-            
-            try
-            {
-                _memberService.UnRegistered(Int32.Parse(User.FindFirstValue("Sid")));
-                return Ok();
-            }
-            catch (Exception e)
-            {
-
-                return BadRequest(e.Message);
-            }
-        }
+        
     }
 }

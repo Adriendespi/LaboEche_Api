@@ -128,7 +128,7 @@ namespace LaboEchec.BLL.Services
             return tournament;
         }
 
-        public Members UnRegistered(int id, string tournament)
+        public void UnRegistered(int id, string tournament)
         {
             Members LoginMember = _ServiceMember.GetById(id);
             Tournament t = _ServiceTournament.GetByName(tournament);
