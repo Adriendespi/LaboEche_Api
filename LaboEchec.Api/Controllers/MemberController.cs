@@ -28,10 +28,20 @@ namespace LaboEchec.Api.Controllers
         public IActionResult Register(MemberRegister member)
         {
             if (!ModelState.IsValid) return BadRequest();
-
+            string MemberCreatedMail = @$"
+            Félicitations !
+            Votre compte a bien été crée sur le serveur des services CheckMate !
+            Voici les informations de votre compte. Nous vous invitons à noter ces informtions en lieu sûr et à supprimer ce mail dès que possible.
+            Pseudo = {member.Name}
+            Adresse mail = {member.Email}
+            Mot de Passe = {member.Pwd}
+            Bien à vous,
+            l'équipe de développement du service CheckMate.";
             try
             {
                 _memberService.Register(member);
+                MailManager.SendFromKhunly(member.Email, MemberCreatedMail, "NIKOUMOUK");
+
                 return Ok();
             }
             catch (Exception e)
@@ -59,6 +69,6 @@ namespace LaboEchec.Api.Controllers
                 return BadRequest(e.Message);
             }
         }
-        
+
     }
 }
