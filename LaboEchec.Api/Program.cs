@@ -37,6 +37,7 @@ builder.Services.AddSwaggerGen(c =>
         }
     };
 
+
 c.AddSecurityDefinition("Bearer", securitySchema);
 
 var securityRequirement = new OpenApiSecurityRequirement
@@ -47,6 +48,12 @@ var securityRequirement = new OpenApiSecurityRequirement
 c.AddSecurityRequirement(securityRequirement);
 
 });
+builder.Services.AddCors(o => o.AddDefaultPolicy(b =>
+{
+    b.AllowAnyHeader();
+    b.AllowAnyMethod();
+    b.AllowAnyOrigin();
+}));
 builder.Services.AddDbContext<LaboEchecContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("default")));
 
 builder.Services.AddScoped<IMemberService,MemberService>();
