@@ -63,8 +63,8 @@ namespace LaboEchec.Api.Controllers
         {
             try
             {
-                _tournamentService.GetLast10();
-                return Ok();
+                var items = _tournamentService.GetLast10();
+                return Ok(items);
             }
             catch(Exception ex)
             {
